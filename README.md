@@ -6,8 +6,8 @@
 # DATOS GENERALES
 
 - Lugar: SistemasUNI
-- Horario: Sábados de 08:00 a 13:00 Horas
-- Inicio: 02-ABRIL-2016
+- Horario: Sábados de 08:00 a 14:00 Horas
+- Inicio: 16-ABRIL-2016
 - Dirección: https://goo.gl/maps/98vwAt9NZMU2
 - Contenido: http://www.sistemasuni.edu.pe/dpdf/Workshops/WorkshopSpringFramework.pdf
 - Sitio web: http://www.sistemasuni.edu.pe
@@ -42,6 +42,6 @@
 
 # CLASE 01 
 
-- Fecha: 02-ABRIL-2016
+- Fecha: 16-ABRIL-2016
 
 
