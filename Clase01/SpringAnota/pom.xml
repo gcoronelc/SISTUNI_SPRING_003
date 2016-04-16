@@ -1,10 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.springframework.samples</groupId>
-  <artifactId>SpringAnota</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  
-  <properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.springframework.samples</groupId>
+	<artifactId>SpringAnota</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
 
 		<!-- Generic properties -->
 		<java.version>1.6</java.version>
@@ -25,7 +26,7 @@
 		<junit.version>4.11</junit.version>
 
 	</properties>
-	
+
 	<dependencies>
 		<!-- Spring and Transactions -->
 		<dependency>
@@ -60,7 +61,15 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 
-		
+
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+
+
+
 		<!-- Test Artifacts -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -75,5 +84,5 @@
 			<scope>test</scope>
 		</dependency>
 
-	</dependencies>	
+	</dependencies>
 </project>
