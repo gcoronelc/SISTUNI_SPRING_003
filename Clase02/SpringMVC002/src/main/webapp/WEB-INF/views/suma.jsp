@@ -11,7 +11,7 @@
   <h1>SUMA</h1>
   
   <c:if test="${suma == null}">
-	  <form method="post" action="suma2.htm">
+	  <form method="post" action="suma.htm">
 	  	<p>Número 1:<input type="text" name="n1" /></p>
 	  	<p>Número 2:<input type="text" name="n2" /></p>
 	  	<p><input type="submit" value="Procesar" /></p>  
