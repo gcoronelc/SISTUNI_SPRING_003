@@ -7,9 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>SALDO CUENTA</h1>
-	<p>Cuenta: ${cuenta}</p>
-	<p>Saldo: ${saldo}</p>
+
+	<h1>DATOS DEL CLIENTE</h1>
 	<p>${error}</p>
+	<p>Codigo: ${bean.codigo}</p>
+	<p>Paterno: ${bean.paterno}</p>
+	<p>Materno: ${bean.materno}</p>
+	<p>Nombre: ${bean.nombre}</p>
+
 </body>
 </html>

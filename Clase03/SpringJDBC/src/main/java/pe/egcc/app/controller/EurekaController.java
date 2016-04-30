@@ -19,8 +19,25 @@ public class EurekaController {
   public String verSaldoCuenta(
       @RequestParam("cuenta") String cuenta, Model model){
     model.addAttribute("cuenta", cuenta);
-    model.addAttribute("saldo", eurekaService.getSaldoCuenta(cuenta));       
+    try {
+      model.addAttribute("saldo", eurekaService.getSaldoCuenta(cuenta));
+    } catch (Exception e) {
+      model.addAttribute("error", e.getMessage());
+    }
     return "saldoCuenta";
   }
+  
+  @RequestMapping(value="/verCliente.htm", method=RequestMethod.GET)
+  public String verCliente(
+      @RequestParam("codigo") String codigo, Model model){
+    try {
+      model.addAttribute("bean", eurekaService.getCliente(codigo));
+    } catch (Exception e) {
+      model.addAttribute("error", e.getMessage());
+    }
+    return "verCliente";
+  }
+  
+  
   
 }
