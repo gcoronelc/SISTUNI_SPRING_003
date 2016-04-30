@@ -36,7 +36,7 @@
 - Canal de Spring: https://www.youtube.com/channel/UCeBr6E8TRP1pBDvkC9oqRhg
 - Introducción a Git: https://www.youtube.com/watch?v=zH3I1DZNovk
 - Curso de Git: https://youtu.be/NmbqlkLTOSI
-
+- Crear esquema EUREKA: https://www.youtube.com/watch?v=qOW90RXepUs
 
 # CLASE 01 
 
