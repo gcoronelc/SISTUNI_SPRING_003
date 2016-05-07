@@ -17,4 +17,8 @@ public interface EurekaDaoEspec {
   
   void procDeposito(String cuenta, double importe, String codEmp);
   
+  void procDeposito2(String cuenta, double importe, String codEmp);
+  
+  void procRetiro(String cuenta, double importe, String codEmp, String clave);
+  
 }

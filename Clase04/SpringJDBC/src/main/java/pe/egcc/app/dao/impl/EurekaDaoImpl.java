@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -91,12 +92,66 @@ public class EurekaDaoImpl extends AbstractDao implements EurekaDaoEspec {
       propagation=Propagation.REQUIRES_NEW)
   @Override
   public void procDeposito(String cuenta, double importe, String codEmp) {
+    // Variables
     String sql;
+    Map<String,Object> map;
+    double saldo;
+    int cont;
     // Paso 1: Leer datos de la cuenta
-    
-    
-    
-    
+    sql = "select dec_cuensaldo, int_cuencontmov  "
+        + "from cuenta where chr_cuencodigo = ? "
+        + "for update ";
+    map = jdbcTemplate.queryForMap(sql, cuenta);
+    saldo = Double.parseDouble(map.get("dec_cuensaldo").toString());
+    cont = Integer.parseInt(map.get("int_cuencontmov").toString());
+    // Retardo
+    try{
+      Thread.currentThread().sleep(1000);
+    } catch(Exception e){}
+    // Paso 2: Actualizar cuenta   
+    saldo += importe;
+    cont++;
+    sql = "update cuenta set dec_cuensaldo = ?, "
+        + "int_cuencontmov = ? "
+        + "where chr_cuencodigo = ? ";
+    jdbcTemplate.update(sql, saldo, cont, cuenta);
+    // Paso 3: Registrar movimiento
+    sql = "insert into movimiento(chr_cuencodigo,int_movinumero,"
+        + "dtt_movifecha,chr_emplcodigo,chr_tipocodigo,dec_moviimporte) "
+        + "values(?,?,SYSDATE,?,'003',?)";
+    jdbcTemplate.update(sql,cuenta,cont,codEmp,importe);
   }
+
+  @Transactional(
+      rollbackFor=Exception.class, //garantizar roll back en todas las clases
+      propagation=Propagation.REQUIRES_NEW) //requiere una transaccion nueva
+  @Override
+  public void procDeposito2(String cuenta, double importe, String codEmp) {
+    //variables
+    String sql;
+    int cont;
+    //Paso 1: Leer datos de la cuenta::
+    sql = "update cuenta set dec_cuensaldo = dec_cuensaldo + ?, "
+        + "int_cuencontmov = int_cuencontmov + 1 "
+        + "where chr_cuencodigo = ? ";
+    jdbcTemplate.update(sql, importe, cuenta);
+    //Paso 2:: Actualizar cuenta;
+    sql= "select int_cuencontmov from cuenta where chr_cuencodigo = ? ";
+    cont= jdbcTemplate.queryForInt(sql, cuenta);
+    //Paso 3: Registrar movimiento::
+    sql="insert into movimiento(chr_cuencodigo, int_movinumero,"
+        + "dtt_movifecha, chr_emplcodigo, chr_tipocodigo, dec_moviimporte) "
+        + "values(?,?,SYSDATE,?,'003',?)";
+    jdbcTemplate.update(sql,cuenta,cont,codEmp,importe);
+  }
+
+  @Override
+  public void procRetiro(String cuenta, double importe, String codEmp, String clave) {
+    String sql = "{call usp_egcc_retiro( ?, ?, ?, ? )}";
+    jdbcTemplate.update(sql, cuenta, importe, codEmp, clave);
+  }
+  
+  
+  
 
 }

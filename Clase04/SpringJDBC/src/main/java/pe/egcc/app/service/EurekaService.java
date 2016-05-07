@@ -27,4 +27,12 @@ public class EurekaService {
     return eurekaDao.getMovimientos(cuenta);
   }
   
+  public void procDeposito(String cuenta, double importe, String codEmp) {
+    eurekaDao.procDeposito2(cuenta, importe, codEmp);
+  }
+  
+  public void procRetiro(String cuenta, double importe, String codEmp, String clave){
+    eurekaDao.procRetiro(cuenta, importe, codEmp, clave);
+  }
+  
 }
