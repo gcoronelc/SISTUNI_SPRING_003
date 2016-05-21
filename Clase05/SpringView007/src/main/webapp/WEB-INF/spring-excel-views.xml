@@ -7,4 +7,8 @@
 	   	class="pe.egcc.app.controller.ListaProductosExcelView">
 	</beans:bean>
 	
+	<beans:bean id="estudiantesExcelView"
+	   	class="pe.egcc.app.controller.ListEstudiantesExcelView">
+	</beans:bean>
+	
 </beans:beans>

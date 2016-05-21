@@ -33,7 +33,11 @@ public class HomeController {
 
     logger.info("Cargando la página principal.");
     
-    ModelAndView view = new ModelAndView("home","estudianteBean", new EstudianteBean());
+    EstudianteBean bean = new EstudianteBean();
+    bean.setNombre("Gustavo");
+    bean.setNota1(18);
+    bean.setNota2(20);
+    ModelAndView view = new ModelAndView("home","panchito", bean);
     return view;
 
   }
@@ -54,7 +58,7 @@ public class HomeController {
     } else {
       // Notas no son correctas
       logger.info("Error en las notas.");
-      view = new ModelAndView("home", "estudianteBean", estudianteBean);
+      view = new ModelAndView("home", "panchito", estudianteBean);
       view.addObject("mensaje", "Las notas no son correctas.");
     }
     

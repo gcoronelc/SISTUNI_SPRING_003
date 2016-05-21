@@ -17,7 +17,7 @@
 		<p class="errorMessage">${mensaje}</p>
 	</c:if>
 
-	<form:form commandName="estudianteBean" method="post"
+	<form:form commandName="panchito" method="post"
 		action="doProcesarEstudiante.htm">
 
 		<fieldset style="width: 300px;">

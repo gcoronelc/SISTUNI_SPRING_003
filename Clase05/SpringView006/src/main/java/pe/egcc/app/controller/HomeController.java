@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import pe.egcc.app.model.EstudianteBean;
 import pe.egcc.app.service.EstudianteService;
 import pe.egcc.app.validator.EstudianteValidator;
+import pe.egcc.app.validator.PanchitoValidator;
 
 /**
  * 
@@ -41,6 +42,7 @@ public class HomeController {
   @InitBinder
   protected void initBinder(WebDataBinder binder) {
       binder.setValidator(new EstudianteValidator());
+      //binder.setValidator(new PanchitoValidator());
   }
 
   @RequestMapping(value = "/", method = RequestMethod.GET)

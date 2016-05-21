@@ -17,7 +17,7 @@
 
 	<h3><a href="./exportExcel">Export to Excel</a></h3>
 
-	<table border="1px" cellpadding="8px">
+	<table border="1px" cellpadding="8px" id="DATOS">
 		<tr>
 			<td>ID</td>
 			<td>NOMBRE</td>
